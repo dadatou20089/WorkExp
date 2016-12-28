@@ -1,0 +1,30 @@
+allprojects {
+    apply plugin: 'maven'
+    group = "me.ele.napos"
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'http://repo.maven.apache.org/maven2' }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    compileJava {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+        options.compilerArgs << '-parameters'
+        options.fork = true
+        options.encoding="UTF-8"
+        options.forkOptions.executable = 'javac'
+    }
+    repositories {
+        mavenLocal()
+        maven { url "http://repo.maven.apache.org/maven2" }
+    }
+}
+
+
