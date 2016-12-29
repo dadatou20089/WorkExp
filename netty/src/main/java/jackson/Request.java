@@ -1,4 +1,4 @@
-package entity;
+package jackson;
 
 import java.util.ArrayList;
 import java.util.List;

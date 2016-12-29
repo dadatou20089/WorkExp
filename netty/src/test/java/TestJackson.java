@@ -1,14 +1,13 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import entity.MyJson1;
-import serialize.MyDeSerializy;
-import serialize.MyDeSerializy1;
-import utils.MyJson;
+import jackson.entities.MyJson1;
+import jackson.serialize.MyDeSerializy;
+import jackson.serialize.MyDeSerializy1;
 
 /**
  * Created by nick on 16/12/20.
  */
-public class JsonTester {
+public class TestJackson {
 
     public static void main(String[] args) throws Exception{
         ObjectMapper mapper = new ObjectMapper();

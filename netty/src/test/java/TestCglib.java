@@ -5,10 +5,13 @@ import cglib.TesterInterceptor1;
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
 
-public class testCglib {
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
-    public static void main(String[] args) {
-        testCallBack();
+public class TestCglib {
+
+    public static void main(String[] args) throws Exception {
+        testReflect();
     }
 
     public static void testEnhancer() {
@@ -17,7 +20,8 @@ public class testCglib {
         enhancer.setCallback(new TesterInterceptor());
 
         Tester tester = (Tester) enhancer.create();
-        tester.tester();
+        tester.tester("aa");
+
     }
 
     public static void testCallBack() {
@@ -32,8 +36,25 @@ public class testCglib {
         enhancer.setCallbackFilter(new TesterCallback());
 
         Tester tester = (Tester) enhancer.create();
-        tester.tester();
-        tester.tester1();
+        tester.tester("aa");
+        tester.tester1("aa", "bb");
     }
+
+    public static void testReflect() throws Exception{
+        String method = "tester";
+        String clazz = "cglib.Tester";
+        Class c = Class.forName(clazz);
+        System.out.println(c.getName());
+        Method[] methods = c.getDeclaredMethods();
+        for (Method method1 : methods) {
+            System.out.print(method1.getName() + ", ");
+            for (Parameter parameter : method1.getParameters()) {
+                System.out.print(parameter.getName() + ", 11" + parameter.getType() + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
 
 }

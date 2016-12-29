@@ -1,10 +1,10 @@
-package serialize;
+package jackson.serialize;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import entity.MyJson1;
+import jackson.entities.MyJson1;
 
 import java.io.IOException;
 

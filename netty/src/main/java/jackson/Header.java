@@ -1,4 +1,4 @@
-package entity;
+package jackson;
 
 public class Header {
     private String headId;

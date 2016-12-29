@@ -2,9 +2,8 @@ package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Header;
-import entity.Request;
-import org.apache.log4j.BasicConfigurator;
+import jackson.Header;
+import jackson.Request;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
