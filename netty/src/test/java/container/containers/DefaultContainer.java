@@ -10,6 +10,8 @@ import container.containers.entities.ContainerObject;
 import container.containers.entities.ContainerPackages;
 import container.protocals.NcpProtocolInterceptor;
 import net.sf.cglib.proxy.Enhancer;
+import org.apache.log4j.Logger;
+import utils.MyLogger;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -20,7 +22,7 @@ import java.util.stream.Collectors;
  * Created by nick on 16/12/30.
  */
 public class DefaultContainer implements ContainerFactory {
-
+    private static Logger logger = MyLogger.getLogger(DefaultContainer.class);
     private static ContainerModule module;
     private static ContainerPackages packages;
 
@@ -94,7 +96,7 @@ public class DefaultContainer implements ContainerFactory {
                 processor.processor(object, annotation);
             }
 
-            System.out.println("Init Container Object: " + className);
+            logger.info("Init Container Object: " + className);
 
             module.addObject(object);
         } catch (ClassNotFoundException e) {

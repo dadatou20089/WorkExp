@@ -7,6 +7,8 @@ import container.single.SingleContainer;
 import http.NcpProtocal;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
+import org.apache.log4j.Logger;
+import utils.MyLogger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +25,9 @@ import java.util.Map;
  * Created by nick on 16/12/30.
  */
 public class NcpProtocolInterceptor implements MethodInterceptor {
+
+    private static Logger logger = MyLogger.getLogger(NcpProtocolInterceptor.class);
+
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         NcpProtocal ncpProtocal = new NcpProtocal();
@@ -35,19 +40,19 @@ public class NcpProtocolInterceptor implements MethodInterceptor {
         String className = o.getClass().getName().split("\\$\\$")[0];
         String methodName = method.getName();
         String params = ncpProtocal.getNcpRequestBody(map, className, methodName);
-        System.out.println(params);
-        System.out.println("className:" + className + ", methodName: " + methodName);
-        System.out.println("args:" + map);
+        logger.info(params);
+        logger.info("className:" + className + ", methodName: " + methodName);
+        logger.info("args:" + map);
 
         ContainerFactory container = SingleContainer.getInstance();
         ContainerModule module = container.getModule();
         ContainerObject object = module.getContainerObjectByClassName(className);
         String uri = object.getServerUri(); //"http://192.168.113.225:8488/rpc"
 
-        System.out.println(uri);
+        logger.info(uri);
 
         String result = sendPost(uri, params);
-        System.out.println(result);
+        logger.info(result);
         return result;
     }
 
@@ -90,8 +95,8 @@ public class NcpProtocolInterceptor implements MethodInterceptor {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送 POST 请求出现异常！"+e);
-            e.printStackTrace();
+            logger.info("发送 POST 请求出现异常！"+e);
+            logger.error(e);
         }
         //使用finally块来关闭输出流、输入流
         finally{

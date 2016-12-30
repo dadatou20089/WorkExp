@@ -3,6 +3,8 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import jackson.entities.MyJson1;
 import jackson.serialize.MyDeSerializy;
 import jackson.serialize.MyDeSerializy1;
+import org.apache.log4j.Logger;
+import utils.MyLogger;
 
 /**
  * Created by nick on 16/12/20.
