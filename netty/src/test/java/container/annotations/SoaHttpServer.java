@@ -8,9 +8,8 @@ import java.lang.annotation.Target;
 /**
  * Created by nick on 16/12/30.
  */
-@Target({
-    ElementType.TYPE
-})
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SoaServer {
+public @interface SoaHttpServer {
+    String uri() default "http://192.168.113.225:8488/rpc";
 }

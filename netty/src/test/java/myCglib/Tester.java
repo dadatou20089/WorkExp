@@ -1,4 +1,4 @@
-package cglib;
+package myCglib;
 
 /**
  * Created by nick on 16/11/10.

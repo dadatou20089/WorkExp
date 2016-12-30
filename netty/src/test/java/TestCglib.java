@@ -1,7 +1,7 @@
-import cglib.Tester;
-import cglib.TesterCallback;
-import cglib.TesterInterceptor;
-import cglib.TesterInterceptor1;
+import myCglib.Tester;
+import myCglib.TesterCallback;
+import myCglib.TesterInterceptor;
+import myCglib.TesterInterceptor1;
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
 
@@ -11,7 +11,7 @@ import java.lang.reflect.Parameter;
 public class TestCglib {
 
     public static void main(String[] args) throws Exception {
-        testReflect();
+        testEnhancer();
     }
 
     public static void testEnhancer() {
@@ -21,7 +21,6 @@ public class TestCglib {
 
         Tester tester = (Tester) enhancer.create();
         tester.tester("aa");
-
     }
 
     public static void testCallBack() {
@@ -42,7 +41,7 @@ public class TestCglib {
 
     public static void testReflect() throws Exception{
         String method = "tester";
-        String clazz = "cglib.Tester";
+        String clazz = "myCglib.Tester";
         Class c = Class.forName(clazz);
         System.out.println(c.getName());
         Method[] methods = c.getDeclaredMethods();

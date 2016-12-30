@@ -1,4 +1,4 @@
-package cglib;
+package myCglib;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -12,7 +12,7 @@ public class TesterInterceptor implements MethodInterceptor{
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         System.out.println("before invoke " + method.getName() + objects.toString());
-        methodProxy.invokeSuper(o, objects);
+        //methodProxy.invokeSuper(o, objects);
         System.out.println("after invoke " + method.getName() + objects.toString());
         return null;
     }

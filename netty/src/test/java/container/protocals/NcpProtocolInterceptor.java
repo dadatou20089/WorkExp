@@ -1,5 +1,9 @@
-package container.proxy;
+package container.protocals;
 
+import container.ContainerFactory;
+import container.containers.entities.ContainerModule;
+import container.containers.entities.ContainerObject;
+import container.single.SingleContainer;
 import http.NcpProtocal;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -18,7 +22,7 @@ import java.util.Map;
 /**
  * Created by nick on 16/12/30.
  */
-public class HttpInterceptor implements MethodInterceptor {
+public class NcpProtocolInterceptor implements MethodInterceptor {
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         NcpProtocal ncpProtocal = new NcpProtocal();
@@ -35,7 +39,14 @@ public class HttpInterceptor implements MethodInterceptor {
         System.out.println("className:" + className + ", methodName: " + methodName);
         System.out.println("args:" + map);
 
-        String result = sendPost("http://192.168.113.225:8488/rpc", params);
+        ContainerFactory container = SingleContainer.getInstance();
+        ContainerModule module = container.getModule();
+        ContainerObject object = module.getContainerObjectByClassName(className);
+        String uri = object.getServerUri(); //"http://192.168.113.225:8488/rpc"
+
+        System.out.println(uri);
+
+        String result = sendPost(uri, params);
         System.out.println(result);
         return result;
     }

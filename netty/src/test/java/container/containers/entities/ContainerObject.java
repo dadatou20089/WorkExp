@@ -1,4 +1,4 @@
-package container.entities;
+package container.containers.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,4 +15,5 @@ public class ContainerObject {
     private String className;
     private Object proxy;
     private Class<?> clazz;
+    private String serverUri;
 }

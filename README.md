@@ -6,7 +6,7 @@
 ### 2016/12/28 添加deamon
 
 - netty deamon
-- cglib deamon
+- myCglib deamon
 - guava deamon
 
 

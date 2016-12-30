@@ -1,4 +1,4 @@
-package cglib;
+package myCglib;
 
 import net.sf.cglib.proxy.CallbackFilter;
 
