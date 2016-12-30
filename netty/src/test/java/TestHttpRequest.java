@@ -1,9 +1,14 @@
+import http.NcpProtocal;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by nick on 16/12/29.
@@ -11,18 +16,16 @@ import java.net.URLConnection;
 public class TestHttpRequest {
 
     public static void main(String[] args) {
-        String params = "{" +
-                "\"ver\":\"1.0\"," +
-                "\"soa\":{" +
-                    "\"rpc\":\"napos.shop.api.melody|1.14\"," +
-                    "\"req\":\"napos.shop.api.melody^^8b62b87c-bb11-4dc9-8e76-fcd0a0ee132a|1482486393155\"}," +
-                    "\"iface\":\"me.ele.bpm.bus.policy.core.provider.BizPolicyProvider\"," +
-                    "\"method\":\"shopRelaterInfos\"," +
-                    "\"args\":{\"rstIdList\":\"[968984]\"" +
-                "}," +
-                "\"metas\":null}";
+        Map<String, Object> myArgs = new HashMap<>();
+        myArgs.put("rstIdList", Arrays.asList(968984));
 
-        String s = sendPost("http://192.168.113.225:8488/rpc", params);
+        NcpProtocal protocal = new NcpProtocal();
+        String params = protocal.getNcpRequestBody(myArgs);
+        System.out.println(params);
+        String params1 = "{\"ver\":\"1.0\",\"soa\":{\"rpc\":\"napos.shop.api.melody|1.14\",\"req\":\"napos.shop.api.melody^^8b62b87c-bb11-4dc9-8e76-fcd0a0ee132a|1482486393155\"},\"iface\":\"me.ele.bpm.bus.policy.core.provider.BizPolicyProvider\",\"method\":\"shopRelaterInfos\",\"args\":{\"rstIdList\":\"[968984]\"},\"metas\":null}";
+        System.out.println(params1);
+
+        String s = sendPost("http://192.168.113.225:8488/rpc", params1);
 
         System.out.println(s);
     }
