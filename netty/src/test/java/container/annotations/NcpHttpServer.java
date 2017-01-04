@@ -11,6 +11,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NcpHttpServer {
+    String name() default "";
     String uri() default "http://192.168.113.225:8488";
     String suffix() default "/invoke";
 }

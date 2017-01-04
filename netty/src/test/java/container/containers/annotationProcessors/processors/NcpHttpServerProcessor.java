@@ -12,5 +12,8 @@ public class NcpHttpServerProcessor implements Processor<NcpHttpServer>{
     public void process(ContainerObject object, NcpHttpServer annotation) {
         String uri = annotation.uri() + annotation.suffix();
         object.setServerUri(uri);
+        if (annotation.name() != null && !annotation.name().isEmpty()) {
+            object.setBeanName(annotation.name());
+        }
     }
 }

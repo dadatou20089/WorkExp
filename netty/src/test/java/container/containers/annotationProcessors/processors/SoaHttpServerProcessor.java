@@ -12,5 +12,8 @@ public class SoaHttpServerProcessor implements Processor<SoaHttpServer> {
     public void process(ContainerObject object, SoaHttpServer annotation) {
         String uri = annotation.uri() + annotation.suffix();
         object.setServerUri(uri);
+        if (annotation.name() != null && !annotation.name().isEmpty()) {
+            object.setBeanName(annotation.name());
+        }
     }
 }
