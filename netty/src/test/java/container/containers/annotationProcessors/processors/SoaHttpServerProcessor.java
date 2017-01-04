@@ -7,9 +7,10 @@ import container.containers.entities.ContainerObject;
 /**
  * Created by nick on 16/12/30.
  */
-public class SoaServerProcessor implements Processor<SoaHttpServer> {
+public class SoaHttpServerProcessor implements Processor<SoaHttpServer> {
     @Override
-    public void processor(ContainerObject object, SoaHttpServer annotation) {
-        object.setServerUri(annotation.uri());
+    public void process(ContainerObject object, SoaHttpServer annotation) {
+        String uri = annotation.uri() + annotation.suffix();
+        object.setServerUri(uri);
     }
 }

@@ -8,7 +8,7 @@ import container.containers.annotationProcessors.Processor;
 import container.containers.entities.ContainerModule;
 import container.containers.entities.ContainerObject;
 import container.containers.entities.ContainerPackages;
-import container.protocals.NcpProtocolInterceptor;
+import container.protocals.ncp.NcpProtocolInterceptor;
 import net.sf.cglib.proxy.Enhancer;
 import org.apache.log4j.Logger;
 import utils.MyLogger;
@@ -93,7 +93,7 @@ public class DefaultContainer implements ContainerFactory {
             Annotation[] annotations = clazz.getAnnotations();
             for (Annotation annotation : annotations) {
                 Processor processor = ProcessUtil.getProcessor(annotation);
-                processor.processor(object, annotation);
+                processor.process(object, annotation);
             }
 
             logger.info("Init Container Object: " + className);

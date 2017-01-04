@@ -3,6 +3,7 @@ package container.protocals;
 import container.ContainerFactory;
 import container.containers.entities.ContainerModule;
 import container.containers.entities.ContainerObject;
+import container.protocals.ncp.NcpProtocolInterceptor;
 import container.single.SingleContainer;
 import http.NcpProtocal;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -24,8 +25,7 @@ import java.util.Map;
 /**
  * Created by nick on 16/12/30.
  */
-public class NcpProtocolInterceptor implements MethodInterceptor {
-
+public abstract class ProtocolInterceptor implements MethodInterceptor {
     private static Logger logger = MyLogger.getLogger(NcpProtocolInterceptor.class);
 
     @Override
@@ -39,7 +39,9 @@ public class NcpProtocolInterceptor implements MethodInterceptor {
 
         String className = o.getClass().getName().split("\\$\\$")[0];
         String methodName = method.getName();
-        String params = ncpProtocal.getNcpRequestBody(map, className, methodName);
+//        String params = ncpProtocal.getNcpRequestBody(map, className, methodName);
+        String params = getParameters(map, className, methodName);
+
         logger.info(params);
         logger.info("className:" + className + ", methodName: " + methodName);
         logger.info("args:" + map);
@@ -55,6 +57,11 @@ public class NcpProtocolInterceptor implements MethodInterceptor {
         logger.info(result);
         return result;
     }
+
+    /***
+     * 获取序列化请求参数
+     */
+    public abstract String getParameters(Map<String, Object> params, String className, String methodName);
 
     /**
      * 向指定 URL 发送POST方法的请求

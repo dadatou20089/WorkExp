@@ -1,7 +1,9 @@
 package container.containers.annotationProcessors;
 
+import container.annotations.NcpHttpServer;
 import container.annotations.SoaHttpServer;
-import container.containers.annotationProcessors.processors.SoaServerProcessor;
+import container.containers.annotationProcessors.processors.NcpHttpServerProcessor;
+import container.containers.annotationProcessors.processors.SoaHttpServerProcessor;
 
 import java.lang.annotation.Annotation;
 
@@ -12,7 +14,9 @@ public class ProcessUtil {
 
     public static Processor getProcessor(Annotation annotation) {
         if (annotation instanceof SoaHttpServer) {
-            return new SoaServerProcessor();
+            return new SoaHttpServerProcessor();
+        } else if (annotation instanceof NcpHttpServer) {
+            return new NcpHttpServerProcessor();
         } else {
             return null;
         }
