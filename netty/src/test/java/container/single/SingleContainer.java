@@ -1,6 +1,6 @@
 package container.single;
 
-import container.ContainerFactory;
+import container.Container;
 import container.containers.DefaultContainer;
 import container.containers.entities.ContainerPackages;
 
@@ -9,9 +9,9 @@ import container.containers.entities.ContainerPackages;
  */
 public class SingleContainer {
 
-    private static ContainerFactory container;
+    private static Container container;
 
-    public static ContainerFactory getInstance(ContainerPackages packages) {
+    public static Container getInstance(ContainerPackages packages) {
         if (container == null) {
             synchronized (SingleContainer.class) {
                 if (container == null) {
@@ -22,7 +22,7 @@ public class SingleContainer {
         return container;
     }
 
-    public static ContainerFactory getInstance() {
+    public static Container getInstance() {
         if (container == null) {
             throw new RuntimeException("容器未初始化");
         }

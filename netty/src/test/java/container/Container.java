@@ -5,7 +5,7 @@ import container.containers.entities.ContainerModule;
 /**
  * Created by nick on 16/12/30.
  */
-public interface ContainerFactory {
+public interface Container {
     /**
      * 获取bean
      */

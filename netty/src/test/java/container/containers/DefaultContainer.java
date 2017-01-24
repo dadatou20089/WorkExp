@@ -2,7 +2,7 @@ package container.containers;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.reflect.ClassPath;
-import container.ContainerFactory;
+import container.Container;
 import container.containers.annotationProcessors.ProcessUtil;
 import container.containers.annotationProcessors.Processor;
 import container.containers.entities.ContainerModule;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 /**
  * Created by nick on 16/12/30.
  */
-public class DefaultContainer implements ContainerFactory {
+public class DefaultContainer implements Container {
     private static Logger logger = MyLogger.getLogger(DefaultContainer.class);
     private static ContainerModule module;
     private static ContainerPackages packages;

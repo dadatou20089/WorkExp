@@ -1,6 +1,6 @@
 package container.protocals;
 
-import container.ContainerFactory;
+import container.Container;
 import container.containers.entities.ContainerModule;
 import container.containers.entities.ContainerObject;
 import container.protocals.ncp.NcpProtocolInterceptor;
@@ -46,7 +46,7 @@ public abstract class ProtocolInterceptor implements MethodInterceptor {
         logger.info("className:" + className + ", methodName: " + methodName);
         logger.info("args:" + map);
 
-        ContainerFactory container = SingleContainer.getInstance();
+        Container container = SingleContainer.getInstance();
         ContainerModule module = container.getModule();
         ContainerObject object = module.getContainerObjectByClassName(className);
         String uri = object.getServerUri(); //"http://192.168.113.225:8488/rpc"

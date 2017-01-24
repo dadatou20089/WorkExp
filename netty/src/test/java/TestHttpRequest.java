@@ -1,5 +1,5 @@
 
-import container.ContainerFactory;
+import container.Container;
 import container.annotations.SoaHttpServer;
 import container.containers.entities.ContainerPackages;
 import container.single.SingleContainer;
@@ -19,7 +19,7 @@ public class TestHttpRequest {
     public static void main(String[] args) {
         ContainerPackages packages = new ContainerPackages();
         packages.addPackage("me.ele.bpm.bus.policy.core.provider");
-        ContainerFactory container = SingleContainer.getInstance(packages);
+        Container container = SingleContainer.getInstance(packages);
 
         //初始化注入
         inject();
