@@ -1,7 +1,7 @@
 package container.protocals.ncp.entities;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import jackson.serialize.MyMapSerializer;
+import netty.jackson.serialize.MyMapSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

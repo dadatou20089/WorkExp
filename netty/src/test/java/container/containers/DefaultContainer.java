@@ -11,7 +11,7 @@ import container.containers.entities.ContainerPackages;
 import container.protocals.ncp.NcpProtocolInterceptor;
 import net.sf.cglib.proxy.Enhancer;
 import org.apache.log4j.Logger;
-import utils.MyLogger;
+import netty.utils.MyLogger;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;

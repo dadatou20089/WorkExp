@@ -9,7 +9,7 @@ import http.NcpProtocal;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import org.apache.log4j.Logger;
-import utils.MyLogger;
+import netty.utils.MyLogger;
 
 import java.io.BufferedReader;
 import java.io.IOException;

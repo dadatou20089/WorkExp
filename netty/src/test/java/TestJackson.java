@@ -1,10 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import jackson.entities.MyJson1;
-import jackson.serialize.MyDeSerializy;
-import jackson.serialize.MyDeSerializy1;
-import org.apache.log4j.Logger;
-import utils.MyLogger;
+import netty.jackson.entities.MyJson1;
+import netty.jackson.serialize.MyDeSerializy;
+import netty.jackson.serialize.MyDeSerializy1;
 
 /**
  * Created by nick on 16/12/20.
