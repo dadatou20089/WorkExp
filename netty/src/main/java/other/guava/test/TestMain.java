@@ -8,6 +8,7 @@ import other.guava.FlowController;
 public class TestMain {
 
     public static void main(String[] args) {
+
         FlowController flowController = new FlowController();
 
         for (int i = 0; i < 10; i ++) {
