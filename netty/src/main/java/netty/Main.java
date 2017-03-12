@@ -10,7 +10,5 @@ public class Main {
 
         int port  = 8080;
         new TimerServer().bind(port);
-
-
     }
 }

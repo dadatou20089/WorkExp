@@ -18,9 +18,8 @@ public class MyThreadPool extends ThreadGroup {
     }
 
     public synchronized Runnable getTask(int id) {
-
         System.out.println("Work Thread-" + id + " start work;");
-        if (tasks.size() == 0) {
+        while (tasks.size() == 0) {
             System.out.println("Work Thread-" + id + " wait for work;");
             try {
                 wait();
@@ -38,6 +37,16 @@ public class MyThreadPool extends ThreadGroup {
         notify();
     }
 
+    public synchronized void waitFinish() {
+        while (tasks.size() > 0) {
+            try {
+                wait(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     class Worker extends Thread {
         private int id;
 
@@ -53,6 +62,7 @@ public class MyThreadPool extends ThreadGroup {
                 Runnable task = getTask(id);
 
                 if (task != null) {
+                    System.out.println("work thread-" + id + " start task!");
                     task.run();
                 } else {
                     System.out.println("work thread-" + id + " exit!");
@@ -62,6 +72,4 @@ public class MyThreadPool extends ThreadGroup {
             System.out.println("work thread-" + id + " exit!");
         }
     }
-
-
 }
