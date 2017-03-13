@@ -5,6 +5,7 @@ allprojects {
 
 buildscript {
     repositories {
+        mavenCentral();
         mavenLocal()
         maven { url 'http://repo.maven.apache.org/maven2' }
         maven { url 'https://artifacts.alfresco.com/nexus/content/repositories/public/'}
@@ -24,6 +25,7 @@ subprojects {
     }
     repositories {
         mavenLocal()
+        mavenCentral()
         maven { url "http://repo.maven.apache.org/maven2" }
     }
 }

@@ -1,0 +1,26 @@
+description = 'spring'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.5.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.5.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.5.0'
+    compile group: 'cglib', name: 'cglib', version: '2.2.2'
+    compile group: 'log4j', name: 'log4j', version: '1.2.7'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.12'
+    compile group: 'com.google.guava', name: 'guava', version: '20.0'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-redis")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
