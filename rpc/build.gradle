@@ -1,18 +1,7 @@
-description = 'spring'
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
-    }
-}
-
-apply plugin: 'org.springframework.boot'
+description = 'rpc'
 
 dependencies {
+    compile group: 'io.netty', name: 'netty-all', version: '5.0.0.Alpha2'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.5.0'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.5.0'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.5.0'
@@ -20,11 +9,5 @@ dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.7'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.12'
     compile group: 'com.google.guava', name: 'guava', version: '20.0'
-
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtime("com.h2database:h2")
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.5.RELEASE'
 }

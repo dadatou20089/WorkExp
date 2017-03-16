@@ -27,9 +27,9 @@ public class MyHttpServerHandler extends ChannelInboundHandlerAdapter {
 
         FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK,
                 Unpooled.wrappedBuffer(content.getBytes()));
-        response.headers().set(HttpHeaders.Names.CONTENT_TYPE, "application/json; charset=UTF-8");
-        response.headers().set(HttpHeaders.Names.CONTENT_LENGTH, response.content().readableBytes());
-        response.headers().set(HttpHeaders.Names.CONNECTION, "keep-alive");
+        response.headers().set("content_type", "application/json; charset=UTF-8");
+        response.headers().set("content_length", response.content().readableBytes() + "");
+        response.headers().set("connection", "keep-alive");
 
         ctx.write(response);
         ctx.flush();

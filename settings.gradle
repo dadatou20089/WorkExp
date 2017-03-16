@@ -1,4 +1,5 @@
 rootProject.name = 'MyNetty'
 
-include 'netty'
 include 'spring'
+include 'rpc'
+include 'netty'

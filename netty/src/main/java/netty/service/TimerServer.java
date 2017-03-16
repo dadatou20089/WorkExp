@@ -19,7 +19,6 @@ import netty.service.channel.MyHttpServerHandler;
  */
 public class TimerServer {
     public void bind(int port) {
-
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -53,7 +52,7 @@ public class TimerServer {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new HttpRequestDecoder())
-                                    .addLast(new HttpObjectAggregator(64553))
+                                    .addLast(new HttpObjectAggregator(65535))
                                     .addLast(new HttpResponseEncoder())
                                     .addLast(new MyHttpServerHandler());
                         }
